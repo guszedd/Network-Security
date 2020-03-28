@@ -1,20 +1,29 @@
 #  Network-Security
-## Network Security Homework #2
+### JHU Network Security Homework #2
 
 ## Table of Contents
+* Purpose and Architecture
 * Readme
 * Cloning this repository
 * Server Runtime Setup
 * Client Runtime Setup
 * Notes
 
-![alt text](https://github.com/guszedd/Network-Security/blob/master/jhu2020.jpg "Logo Title Text 1")
-
-## Read me First
-This project demonstrates application level development on a Raspberry Pi using Docker containers, cross-compilation, and knowledge management using a GitHub Wiki. In this project the intent was to setup a runtime environment and a build environment. The runtime environment consisted of a client hosted on a Kali Linux virtual machine running a Kali Linux docker container. The client connects to a Kodi media server instance hosted by an Ubuntu Server docker container running on a Raspberry Pi 4 with an Ubuntu server operating system. The build environment allowed developers to build the applications on an x86-64 bit architecture but cross compile it for an ARM64 bit architecture. Wiki markdown format documents were used for documentation and knowledge management.
+## Purpose and Architecture
+This project demonstrates application level development on a Raspberry Pi using Docker containers and knowledge management using a GitHub Wiki. The runtime environment consisted of a client hosted on a Kali Linux virtual machine running a Kali Linux docker container. The client connects to a Kodi media server instance hosted by an Kali Server docker container running on a Raspberry Pi 4 with an Ubuntu server operating system.  Wiki markdown format documents were used for documentation and knowledge management.
 
 The resulting architecture is depicted below:
+![alt text](https://github.com/guszedd/Network-Security/blob/master/architecture2.GIF "Architecture Diagram")
 
+
+## Read me First
+All "hosts" need to have the following prerequisites installed:
+  * Docker - Chose the appropriate flavor of Docker for your requirements. EX `sudo apt-get install docker.io`
+  * `net-tools`
+  * `software-properties-common`
+  * `systemd`
+  * `systemd-sysv`
+  * SSH client
 
 
 ## Cloning this repository
@@ -28,28 +37,17 @@ To clone this repository:
   3. `$ git clone https://github.com/guszedd/Network-Security.git`
   
  ## Server Runtime Setup
- The instructions here setup kodi in the server target (Docker container on Kali).
-Follow the below:
+ Server setup instructions are located on the wiki: https://github.com/guszedd/Network-Security/wiki/Server-Runtime-environment-instructions
 
-```
-$ mkdir $HOME/kodi
-$ cd $HOME/kodi
-$ git clone https://github.com/guszedd/Network-Security.git
-$ cd Network-Security/dockerfile_server
-$ sudo docker build --network host --tag kodi_server_img .
-$ sudo docker run -it --name kodi_server --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --network host kodi_server_img
-```
-
-than check ip address with `ifconfig` - this example consider container'sip address is `192.168.232.132`.
-
-on the RPI run ` $ ssh -X root@192.168.232.132 `
-the password of root is `toor`
-and then run `$ kodi`
-
- 
- 
  ## Client Runtime Setup
- 
- 
+ Client setup instructions are located on the wiki: https://github.com/guszedd/Network-Security/wiki/Client-Runtime-environment-instructions
  
  ## Notes
+ * Adding media to Kodi requires following strict procedures as outlined on: https://kodi.wiki/view/Adding_video_sources 
+  Steps include:
+    * Preparing the Files: Naming & Folder Structures
+    * Creating the Library: Adding Sources and Scrape (VERY IMPORTANT)
+    * Modifying your Library
+    * Safeguarding and Rebuilding
+  If you do not have the right folder structure, add source, or scrape correctly your media will not appear on the client. You may just see the folder structure but not see the files. If that is the case, go back to the guide above and follow the instructions to Set Content and Scrape. Recommend using the default information provider for real movies.
+  
