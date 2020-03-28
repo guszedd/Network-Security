@@ -8,7 +8,7 @@
 * Client Runtime Setup
 * Notes
 
-![alt text](https://github.com/guszedd/Network-Security/jhu2020.jpeg "Logo Title Text 1")
+![alt text](https://github.com/guszedd/Network-Security/jhu2020.jpg "Logo Title Text 1")
 
 ## Read me First
 This project demonstrates application level development on a Raspberry Pi using Docker containers, cross-compilation, and knowledge management using a GitHub Wiki. In this project the intent was to setup a runtime environment and a build environment. The runtime environment consisted of a client hosted on a Kali Linux virtual machine running a Kali Linux docker container. The client connects to a Kodi media server instance hosted by an Ubuntu Server docker container running on a Raspberry Pi 4 with an Ubuntu server operating system. The build environment allowed developers to build the applications on an x86-64 bit architecture but cross compile it for an ARM64 bit architecture. Wiki markdown format documents were used for documentation and knowledge management.
