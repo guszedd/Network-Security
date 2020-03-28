@@ -18,13 +18,14 @@ The resulting architecture is depicted below:
 
 
 ## Read me First
-All "hosts" need to have the following prerequisites installed:
+1. All "hosts" need to have the following prerequisites installed:
   * Docker - Chose the appropriate flavor of Docker for your requirements. EX `sudo apt-get install docker.io`
   * `net-tools`
   * `software-properties-common`
   * `systemd`
   * `systemd-sysv`
   * SSH client
+2. Media is not provided in this repo. User must provide their own media (videos, TV shows, etc). User can use scp to copy data to the server or mount an external media device. However, these steps are the user's responsibility and not included as part of this guide.
 
 
 ## Cloning this repository
