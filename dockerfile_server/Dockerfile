@@ -14,11 +14,8 @@ ENV container docker
 RUN apt-get update
 RUN apt-get upgrade -y
 
-# create a user and set home directory
-RUN useradd -rm -d /home/clientuser -s /bin/bash -g root -G sudo -p kaliclientpass clientuser
-
 # install some useful tools
-RUN apt-get install sudo iputils-ping -y
+RUN apt-get install sudo iputils-ping net-tools nano vim git-core -y
 RUN apt-get install software-properties-common -y
 RUN apt-get install systemd systemd-sysv -y
 
@@ -27,17 +24,16 @@ RUN apt-get install openssh-server -y
 # RUN systemctl start ssh.service #can't do this -- this is an image
 RUN apt-get install --no-install-recommends xorg lxdm lxqt -y
 
-# we need to add ssh to the initd.conf file so it will start automatically 
-#RUN echo "telnet                  stream  tcp     nowait  root    /usr/local/libexec/telnetd      telnetd" >> /etc/inetd.conf
-#RUN echo "telnet                  stream  tcp     nowait  root    /usr/sbin/telnetd      telnetd" >> /etc/inetd.conf
-# from reading online this is a bad idea because of time to setup components (keys)... let's see if can do once container is created?
-
-# setup repo and pull down Kodi
-# RUN sudo add-apt-repository ppa:team-xmbc/ppa
-# RUN sudo apt-get update
+# install kodi
 RUN apt-get install kodi -y
 
+# set root password
+RUN echo "root:toor" | chpasswd
 
+# ssh setting
+RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+ENTRYPOINT service ssh start && bash
 
 # let's send some useful information to the user at this point
 RUN echo 'note can only have ssh running on the container, not in VM'
@@ -48,5 +44,3 @@ RUN echo 'Kodi should open and you can now configure the software accordingly'
 # Things to verify
 # can we create our own user or does it have to be "pi" or one of the root users?
 # does this even work
-
-
