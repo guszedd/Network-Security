@@ -13,7 +13,7 @@
 This project demonstrates application level development on a Raspberry Pi using Docker containers and knowledge management using a GitHub Wiki. The runtime environment consisted of a client hosted on a Kali Linux virtual machine running a Kali Linux docker container. The client connects to a Kodi media server instance hosted by an Kali Server docker container running on a Raspberry Pi 4 with an Ubuntu server operating system.  Wiki markdown format documents were used for documentation and knowledge management.
 
 The resulting architecture is depicted below:
-![alt text](https://github.com/guszedd/Network-Security/blob/master/architecture2.GIF "Architecture Diagram")
+![alt text](https://github.com/guszedd/Network-Security/blob/master/architecture2small.GIF "Architecture Diagram")
 
 
 ## Read me First
